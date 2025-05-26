@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHÂTEAU MONTCLAIR — ДІМ ПОЗАЧАСОВОЇ РОЗКОШІ</title>
+    <meta name="description"
+        content="Château Montclair — готель нового покоління, де поєднано розкіш, технології та культурну спадщину.">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            color: #222;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color:#c9b37e;
+            font-weight: 600;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .gallery-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .gallery-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-slider img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: #333;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 12px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10;
+            border: none;
+            transition: background 0.3s;
+        }
+
+        .gallery-arrow:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .gallery-arrow.left {
+            left: 15px;
+        }
+
+        .gallery-arrow.right {
+            right: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>CHÂTEAU MONTCLAIR — ДІМ ПОЗАЧАСОВОЇ РОЗКОШІ</h1>
+        <nav>
+            <a href="#about">Наша філософія</a>
+            <a href="#gallery">Галерея</a>
+            <a href="#contact">Контакти</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>Наша філософія</h2>
+        <p>
+            Château Montclair — це розкішний готель нового покоління, де елегантність класичних традицій переплітається
+            з інноваційними рішеннями сучасності. У натхненному культурною спадщиною просторі гості поринають у світ
+            вишуканої естетики, де кожна деталь — від інтер’єру до ландшафту — створена з думкою про комфорт, стиль і
+            екологічну свідомість.
+        </p>
+    </section>
+
+    <section id="gallery">
+        <h2>Château Montclair | Suites & Atrium</h2>
+        <div class="gallery-wrapper">
+            <button class="gallery-arrow left" onclick="prevSlide()" aria-label="Попереднє зображення">❮</button>
+            <button class="gallery-arrow right" onclick="nextSlide()" aria-label="Наступне зображення">❯</button>
+            <div class="gallery-slider" id="gallerySlider">
+                <img src="images/interior1.jpg" alt="Інтер’єр 1">
+                <img src="images/interior2.jpg" alt="Інтер’єр 2">
+                <img src="images/interior3.jpg" alt="Інтер’єр 3">
+                <img src="images/interior4.jpg" alt="Інтер’єр 4">
+                <img src="images/interior5.jpg" alt="Інтер’єр 5">
+                <img src="images/interior8.jpg" alt="Інтер’єр 7">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Контакти</h2>
+        <p>Адреса: вул. Богдана Хмельницького, 44 | Київ, Україна</p>
+        <p>Електронна пошта: <a href="mailto:château@montclair.com">château@montclair.com</a></p>
+    </section>
+
+    <footer>
+        &copy; 2025 Château Montclair. Всі права захищені.
+    </footer>
+
+    <script>
+        const slider = document.getElementById('gallerySlider');
+        const totalSlides = slider.children.length;
+        let index = 0;
+
+        function showSlide() {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function nextSlide() {
+            index = (index + 1) % totalSlides;
+            showSlide();
+        }
+
+        function prevSlide() {
+            index = (index - 1 + totalSlides) % totalSlides;
+            showSlide();
+        }
+
+        window.addEventListener('resize', showSlide);
+    </script>
+
+</body>
+
+</html>
